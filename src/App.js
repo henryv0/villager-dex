@@ -1,23 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
+import Villager from './api/Villager';
+import VillagerInput from './components/VillagerInput';
+import VillagerList from './components/VillagerList';
+
 function App() {
+  const testVillagers = ['Bam', 'Agnes', 'Octavian'];
+  const [villagers, setVillagers] = useState(testVillagers);
+
+  const addVillager = (villager) => {
+    setVillagers(villagers => [...villagers, villager])
+    console.log(villagers);
+  };
+
+  // const getVillagerData = (villager) => {
+  //   return Villager(villager);
+  // }
+
+  // console.log(Villager('Bam'));
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Villager Dex</h1>
+
+        <VillagerInput addVillager={addVillager} />
+
+        <VillagerList villagers={villagers} />
+
       </header>
     </div>
   );
