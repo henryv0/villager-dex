@@ -1,9 +1,18 @@
 import React from 'react';
 import VillagerIcon from './VillagerIcon';
+import styled from 'styled-components';
+
+const Ul = styled.ul`
+  display: flex;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  flex-wrap: wrap;
+`;
 
 const VillagerList = ({ villagers, selectVillager }) => {
   return (
-    <ul>
+    <Ul>
       {villagers.map((villager, i) => {
         return (
           <VillagerIcon
@@ -13,7 +22,7 @@ const VillagerList = ({ villagers, selectVillager }) => {
           />
         );
       })}
-    </ul>
+    </Ul>
   );
 };
 

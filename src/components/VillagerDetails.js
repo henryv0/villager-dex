@@ -39,12 +39,14 @@ const VillagerDetails = ({ villagerData, selectedVillager }) => {
   return (
     <>
       {villagerData.map((villager) => {
+        const name = villager.name.toLowerCase();
+
         return (
           <VillagerProfile
-            key={villager.name}
+            key={name}
             data={villager}
             // isActive={selectedVillager}
-            isActive={selectedVillager === villager.name ? true : false} 
+            isActive={selectedVillager === name ? true : false}
           />
         );
       })}

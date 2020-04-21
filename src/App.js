@@ -1,13 +1,48 @@
 import React, { useState } from 'react';
-import './App.css';
+import styled from 'styled-components';
 
 import Villager from './api/Villager';
 import VillagerInput from './components/VillagerInput';
 import VillagerList from './components/VillagerList';
 import VillagerDetails from './components/VillagerDetails';
 
+const Wrapper = styled.div`
+  height: 100vh;
+  background-color: rgb(123, 211, 194);
+`;
+
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+`;
+
+const LeftWrapper = styled.div`
+  background-color: rgb(115, 202, 188);
+  border-radius: 10%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1rem;
+
+  @media (min-width: 768px) {
+    flex-basis: 50%;
+  }
+`;
+
+const ResidentsHeading = styled.h2`
+  background-color: rgb(97, 184, 178);
+  padding: 1rem 2rem;
+  margin-top: -.5rem;
+  color: #fff;
+  border-radius: 15%;
+`;
+
 function App() {
-  const [villagers, setVillagers] = useState(['Bam']);
+  const [villagers, setVillagers] = useState(['bam']);
   const [selectedVillager, setSelectedVillager] = useState('');
   const [villagerData, setVillagerData] = useState([
     {
@@ -43,7 +78,9 @@ function App() {
     },
   ]);
 
-  const addVillager = (villager) => {
+  const addVillager = (villagerName) => {
+    const villager = villagerName.toLowerCase();
+
     setVillagers((villagers) => [...villagers, villager]);
 
     // API Call
@@ -55,25 +92,26 @@ function App() {
     });
   };
 
-  const selectVillager = (e) => {
-    setSelectedVillager(e.target.value);
-  };
-
   return (
-    <div className="App">
-      <header className="App-header">
+    <Wrapper>
+      <header>
         <h1>Villager Dex</h1>
-
         <VillagerInput addVillager={addVillager} />
-
-        <VillagerList villagers={villagers} selectVillager={selectVillager} />
-
+      </header>
+      <Main>
+        <LeftWrapper>
+          <ResidentsHeading>Residents</ResidentsHeading>
+          <VillagerList
+            villagers={villagers}
+            selectVillager={(e) => setSelectedVillager(e.target.value)}
+          />
+        </LeftWrapper>
         <VillagerDetails
           villagerData={villagerData}
           selectedVillager={selectedVillager}
         />
-      </header>
-    </div>
+      </Main>
+    </Wrapper>
   );
 }
 
