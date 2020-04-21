@@ -5,17 +5,14 @@ const getUrl = (name) => {
 };
 
 const Villager = (name) => {  
-  fetch(getUrl(name), {
-    method: "GET",
-    headers: {
-    }
-  })
+  return fetch(getUrl(name))
     .then(response => response.json())
     .then(data => {
       console.log(data);
+      return data;
     })
     .catch(err => {
-      console.log(err);
+      console.error(err);
     });
 }
 

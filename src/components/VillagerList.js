@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+import VillagerIcon from './VillagerIcon';
 
-const VillagerList = ({villagers}) => {
-  
+const VillagerList = ({ villagers, selectVillager }) => {
   return (
     <ul>
       {villagers.map((villager, i) => {
-        return <li key={i}>{villager}</li>
+        return (
+          <VillagerIcon
+            key={villager}
+            villager={villager}
+            selectVillager={selectVillager}
+          />
+        );
       })}
     </ul>
   );
