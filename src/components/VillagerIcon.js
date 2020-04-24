@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const Li = styled.li`
   list-style: none;
-  // flex: 1;
   flex-basis: calc(50% - 2rem);
   text-align: center;
   margin: 1rem;
