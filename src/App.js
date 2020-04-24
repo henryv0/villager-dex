@@ -9,6 +9,7 @@ import VillagerDetails from './components/VillagerDetails';
 const Wrapper = styled.div`
   min-height: 100vh;
   background-color: rgb(123, 211, 194);
+  overflow: hidden;
 `;
 
 const Main = styled.main`
@@ -36,7 +37,11 @@ const LeftWrapper = styled.div`
 `;
 
 const RightWrapper = styled.div`
-  padding: 2rem;
+  position: relative;
+  padding: 0 2rem;
+  flex-basis: 100%;
+  max-width: 100%;
+
   @media (min-width: 768px) {
     flex-basis: 50%;
     max-width: 50%;
@@ -49,7 +54,7 @@ const ResidentsHeading = styled.h2`
   margin-top: -0.5rem;
   color: #fff;
   // border-radius: 30%;
-  border-radius: 19% 23% 29% 33% / 69% 51% 79% 63%;
+  border-radius: 15% 23% 23% 26% / 69% 67% 79% 63%;
 `;
 
 function App() {
@@ -112,11 +117,12 @@ function App() {
     <Wrapper>
       <header>
         {/* <h1>Villager Dex</h1> */}
-        <VillagerInput addVillager={addVillager} />
+        {/* <VillagerInput addVillager={addVillager} /> */}
       </header>
       <Main>
         <LeftWrapper>
           <ResidentsHeading>Residents</ResidentsHeading>
+          <VillagerInput addVillager={addVillager} />
           <VillagerList
             villagers={villagers}
             selectVillager={(e) => setSelectedVillager(e.target.value)}
