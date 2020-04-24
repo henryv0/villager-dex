@@ -125,7 +125,10 @@ function App() {
           <VillagerInput addVillager={addVillager} />
           <VillagerList
             villagers={villagers}
-            selectVillager={(e) => setSelectedVillager(e.target.value)}
+            selectedVillager={selectedVillager}
+            selectVillager={(e) => {
+              setSelectedVillager(e.target.value);
+            }}
           />
         </LeftWrapper>
 

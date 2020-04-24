@@ -10,7 +10,7 @@ const Ul = styled.ul`
   flex-wrap: wrap;
 `;
 
-const VillagerList = ({ villagers, selectVillager }) => {
+const VillagerList = ({ villagers, selectVillager, selectedVillager }) => {
   return (
     <Ul>
       {villagers.map((villager, i) => {
@@ -19,6 +19,7 @@ const VillagerList = ({ villagers, selectVillager }) => {
             key={villager}
             villager={villager}
             selectVillager={selectVillager}
+            selectedVillager={selectedVillager}
           />
         );
       })}
