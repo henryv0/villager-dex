@@ -125,6 +125,7 @@ function App() {
           <VillagerInput addVillager={addVillager} />
           <VillagerList
             villagers={villagers}
+            villagerCount={villagerData.length}
             selectedVillager={selectedVillager}
             selectVillager={(e) => {
               setSelectedVillager(e.target.value);

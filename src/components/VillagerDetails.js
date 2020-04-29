@@ -2,6 +2,10 @@ import React from 'react';
 import VillagerProfile from './VillagerProfile';
 
 const VillagerDetails = ({ villagerData, selectedVillager }) => {
+  console.log(villagerData);
+
+  // when component changes, aka when data actually updates - send Villager name
+
   return (
     <>
       {villagerData.map((villager) => {

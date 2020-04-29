@@ -8,14 +8,33 @@ const Ul = styled.ul`
   margin: 0;
   width: 100%;
   flex-wrap: wrap;
+  margin-top: 2rem;
 `;
 
-const VillagerList = ({ villagers, selectVillager, selectedVillager }) => {
+const VillagerList = ({
+  villagers,
+  villagerCount,
+  selectVillager,
+  selectedVillager,
+}) => {
+
+  console.log(villagers.length !== villagerCount);
+
+  const checkLoading = (i) => {
+    // return villagers.length !== villagerCount;
+    console.log('vilcount', villagerCount);
+
+    let index = i + 1;
+
+    return index > villagerCount;
+  };
+
   return (
     <Ul>
       {villagers.map((villager, i) => {
         return (
           <VillagerIcon
+            isLoading={checkLoading(i)}
             key={villager}
             villager={villager}
             selectVillager={selectVillager}
