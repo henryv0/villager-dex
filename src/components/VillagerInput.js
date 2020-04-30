@@ -85,7 +85,7 @@ const VillagerInput = ({addVillager}) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} autocomplete="off">
+    <form onSubmit={handleSubmit} autoComplete="off">
       <Label htmlFor="villager-input">Type in your villager's name!</Label>
 
       <Input
@@ -95,7 +95,7 @@ const VillagerInput = ({addVillager}) => {
         label="Add villager"
         onChange={(event) => setInput(event.target.value)}
         spellcheck="false"
-        autocomplete="off"
+        autoComplete="off"
         autofill="off"
         placeholder="Search for villagers"
       />
