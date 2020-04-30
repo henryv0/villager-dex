@@ -6,16 +6,18 @@ import villagersList from '../data/villagers';
 
 const Label = styled.label`
   display: block;
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
   color: ${vars.fontPrimary};
+  font-size: 0.8rem;
 `;
 
 const Input = styled.input`
   border-radius: 20px;
   border: 0;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   background: ${vars.primaryYellow};
   box-shadow: none;
+  font-size: 1rem;
 
   &:after {
     border-top: 1px solid black;
@@ -30,7 +32,7 @@ const Button = styled.button`
   border: none;
   background-color: ${vars.primaryYellow};
   border-radius: 20px;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.75rem 0.25rem 0.5rem;
   margin-left: 1rem;
   color: ${vars.fontSecondary};
   font-weight: bold;
@@ -51,11 +53,12 @@ const Button = styled.button`
   }
 
   &:disabled {
-    // background-color: #fff;
+    background-color: #fff;
+    color: rgb(170, 170, 170);
 
-    // span {
-    //   background-color: #fff;
-    // }
+    span {
+      background-color: rgb(170, 170, 170);
+    }
   }
 `;
 
@@ -82,7 +85,7 @@ const VillagerInput = ({addVillager}) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} autocomplete="off">
       <Label htmlFor="villager-input">Type in your villager's name!</Label>
 
       <Input
@@ -93,11 +96,13 @@ const VillagerInput = ({addVillager}) => {
         onChange={(event) => setInput(event.target.value)}
         spellcheck="false"
         autocomplete="off"
+        autofill="off"
+        placeholder="Search for villagers"
       />
 
       <Button type="submit" disabled={isDisabled()}>
         <span>A</span>
-        Add villager
+        Add
       </Button>
     </form>
   );

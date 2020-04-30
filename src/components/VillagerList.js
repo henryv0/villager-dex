@@ -16,16 +16,10 @@ const VillagerList = ({
   villagerCount,
   selectVillager,
   selectedVillager,
+  removeVillager,
 }) => {
-
-  console.log(villagers.length !== villagerCount);
-
   const checkLoading = (i) => {
-    // return villagers.length !== villagerCount;
-    console.log('vilcount', villagerCount);
-
     let index = i + 1;
-
     return index > villagerCount;
   };
 
@@ -39,6 +33,7 @@ const VillagerList = ({
             villager={villager}
             selectVillager={selectVillager}
             selectedVillager={selectedVillager}
+            removeVillager={removeVillager}
           />
         );
       })}

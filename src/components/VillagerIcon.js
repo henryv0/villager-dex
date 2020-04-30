@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Loading from './Loading';
+import vars from './styleVars';
 
 const Li = styled.li`
   list-style: none;
@@ -10,6 +11,7 @@ const Li = styled.li`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 const StyledButton = styled.button`
@@ -60,11 +62,43 @@ const ButtonText = styled.span`
   font-size: 1.5rem;
 `;
 
-const VillagerIcon = ({ isLoading, villager, selectVillager, selectedVillager }) => {
+const DeleteButton = styled.button`
+  position: absolute;
+  bottom: 0;
+  right: 2rem;
+  background-color: ${vars.primaryYellow};
+  border-radius: 50%;
+  border: none;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    width: 20px;
+  }
+`;
+
+const VillagerIcon = ({
+  isLoading,
+  villager,
+  selectVillager,
+  selectedVillager,
+  removeVillager,
+}) => {
   // const [active, selectActive] = useState('');
 
   const handleButton = (e) => {
     selectVillager(e);
+  };
+
+  const deleteVillager = (e) => {
+    // deleteVillager(e);
+    console.log(e);
+
+    // console.log(villager);
+    removeVillager(villager);
   };
 
   return (
@@ -72,22 +106,42 @@ const VillagerIcon = ({ isLoading, villager, selectVillager, selectedVillager })
       {isLoading ? (
         <Loading />
       ) : (
-        <StyledButton value={villager} onClick={handleButton}>
-          <Icon
-            isActive={villager === selectedVillager}
-            width="100%"
-            viewBox="0 0 401 339"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M27.0103 168.365L57.7071 168.478L63.0027 328.713L63.1625 333.548L68 333.548L339 333.548L344 333.548L344 328.548L344 169.527L373.418 169.635L386.829 169.684L376.724 160.867L204.069 10.2334L200.807 7.38671L197.523 10.2094L23.7693 159.574L13.5993 168.316L27.0103 168.365Z"
-              fill="#5EB9AE"
-              stroke="#5EB9AE"
-              strokeWidth="10"
-            />
-          </Icon>
-          <ButtonText>{villager}</ButtonText>
-        </StyledButton>
+        <>
+          <StyledButton value={villager} onClick={handleButton}>
+            <Icon
+              isActive={villager === selectedVillager}
+              width="100%"
+              viewBox="0 0 401 339"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M27.0103 168.365L57.7071 168.478L63.0027 328.713L63.1625 333.548L68 333.548L339 333.548L344 333.548L344 328.548L344 169.527L373.418 169.635L386.829 169.684L376.724 160.867L204.069 10.2334L200.807 7.38671L197.523 10.2094L23.7693 159.574L13.5993 168.316L27.0103 168.365Z"
+                fill="#5EB9AE"
+                stroke="#5EB9AE"
+                strokeWidth="10"
+              />
+            </Icon>
+            <ButtonText>{villager}</ButtonText>
+          </StyledButton>
+
+          <DeleteButton onClick={deleteVillager}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-x"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </DeleteButton>
+        </>
       )}
     </Li>
   );
