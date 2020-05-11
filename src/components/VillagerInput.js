@@ -9,6 +9,7 @@ const Label = styled.label`
   margin-bottom: 1rem;
   color: ${vars.fontPrimary};
   font-size: 0.8rem;
+  font-weight: bold;
 `;
 
 const Input = styled.input`
