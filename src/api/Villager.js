@@ -1,5 +1,5 @@
 const getUrl = (name) => {
-  let URL = `http://localhost:8080/api/villagers/${name}`;
+  let URL = `/api/villager?name=${name}`;
 
   return URL;
 };
